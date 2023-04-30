@@ -1,0 +1,14 @@
+{
+  "name": "hivemind2.0",
+  "version": "2.0.0",
+  "description": "HiveMind - A Developers Community App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "shivamguptanitw@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
