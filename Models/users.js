@@ -19,6 +19,10 @@ const userSchema = new mongoose.Schema(
                type: String,
                required: true,
           },
+          address: {
+               type: String,
+               required: true,
+          },
           github: {
                type: String,
                required: true,
@@ -31,7 +35,7 @@ const userSchema = new mongoose.Schema(
                type: String,
                required: true,
           },
-          profile: {
+          jobProfile: {
                type: String,
                required: true,
           },
