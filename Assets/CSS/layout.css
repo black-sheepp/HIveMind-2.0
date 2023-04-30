@@ -1,9 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;500;600;700&family=Josefin+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat&family=Roboto+Slab:wght@300;400;500;600&family=Source+Code+Pro:wght@200&display=swap");
-
+html{
+    margin: 0;
+}
 body{
     font-family: 'Bai Jamjuree', sans-serif !important;
     margin: 0;
-    padding: 0;
+    padding-top: 40px;
     color: #000428 !important;
     background: linear-gradient(to right, #ece9e6, #ffffff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
