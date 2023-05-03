@@ -24,3 +24,13 @@ module.exports.create = async function(req,res){
         console.log(err)
     }
 }
+
+module.exports.createSession = function(req,res){
+    return res.redirect('/user/dashboard')
+}
+
+module.exports.dashboard = function(req,res){
+    return res.render('dashboard',{
+        title: "Dashboard"
+    })
+}
