@@ -1,0 +1,14 @@
+.post-card{
+    width: 100%;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.img {
+  width: 4.8em;
+  height: 4.8em;
+  background: white;
+  border-radius: 15px;
+  margin: auto;
+}

@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/CSS/dashboard.css" />
 
-<div class="container m-0 " id="feed-post">
+<div class="container m-0" id="feed-post">
      <form action="/post/create" id="new-post-form" method="post">
           <h5>Query</h5>
           <div class="form-floating">
@@ -15,8 +15,11 @@
           <button type="submit" class="mt-2 btn btn-dark">Post</button>
      </form>
 
-     
-     
+     <% for(post of posts){ %>
+     <div class="container mx-0 px-0 my-4" width="50%" style="border: 2px solid black; border-radius: 10px">
+          <%- include('post-card') %>
+     </div>
+     <% } %>
 </div>
 
 <div class="container">
