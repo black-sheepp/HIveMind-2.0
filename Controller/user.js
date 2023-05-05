@@ -34,3 +34,18 @@ module.exports.dashboard = function(req,res){
         title: "Dashboard"
     })
 }
+
+module.exports.profile = function(req,res){
+    return res.render("profile",{
+        title: "Profile"
+    })
+}
+
+module.exports.signOut = function(req,res){
+    req.logout(function (err) {
+        if (err) {
+          return next(err);
+        }
+        res.redirect("/");
+      });
+}
