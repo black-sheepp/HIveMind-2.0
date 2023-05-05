@@ -1,14 +1,14 @@
 <link rel="stylesheet" href="/CSS/dashboard.css" />
 
-<div class="container m-0">
-     <form action="">
+<div class="container m-0 " id="feed-post">
+     <form action="/post/create" id="new-post-form" method="post">
           <h5>Query</h5>
           <div class="form-floating">
                <textarea
                     class="form-control"
                     placeholder="Leave a comment here"
-                    id="floatingTextarea"
                     style="resize: none; border: 3px solid black; height: 90px; width: 70%"
+                    name="content"
                ></textarea>
                <label for="floatingTextarea">Post Your Query Here...</label>
           </div>
@@ -23,9 +23,5 @@
      <ul class="list-group" style="width: 50%; float: right">
           <h5>Friends</h5>
           <li class="list-group-item">An item</li>
-          <li class="list-group-item">A second item</li>
-          <li class="list-group-item">A third item</li>
-          <li class="list-group-item">A fourth item</li>
-          <li class="list-group-item">And a fifth one</li>
      </ul>
 </div>
