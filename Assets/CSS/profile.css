@@ -1,0 +1,21 @@
+.picture-card {
+ cursor: pointer;
+ width: 190px;
+ height: 254px;
+ background: black;
+ border-radius: 5px;
+ border: 3px solid #37FF8B;
+ transition: all .2s;
+ box-shadow: 12px 12px 2px 1px black;
+}
+
+.picture-card:hover {
+ box-shadow: -12px 12px 2px -1px #37FF8B;
+ border: 3px solid black;
+}
+
+.db-field{
+    width: 120px;
+    font-weight: lighter;
+}
+
