@@ -20,9 +20,11 @@
      <p style="margin-bottom: 6px; margin-left: 50px">
           <strong><%= post.content %></strong>
      </p>
-     <form action="">
+     <% if(locals.user) {%>
+     <form action="/comment/create" method="post">
           <div class="input-group mb-1">
                <input
+                    name="content"
                     type="text"
                     class="form-control"
                     placeholder="Add Comment"
@@ -30,25 +32,25 @@
                     aria-describedby="button-addon2"
                     style="margin-left: 50px; margin-right: 0"
                />
-               <button class="btn btn-outline-dark" type="button" id="button-addon2" style="margin-right: 30px">
+               <input type="hidden" name="post" value="<%= post._id %>" />
+               <button class="btn btn-outline-dark" type="submit" id="button-addon2" style="margin-right: 30px">
                     Comment
                </button>
           </div>
      </form>
+     <% } %>
 
      <div class="post-card my-1">
           <img
                src="https://plus.unsplash.com/premium_photo-1665657351698-7d61f4b57ddc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
                class="rounded float-start"
                alt="..."
-               width="40px"
-               height="40px"
+               width="30px"
+               height="30px"
                style="margin: 10px; margin-top: 3px"
           />
           <p style="margin: 0; line-height: 1.1; margin-bottom: 5px">
                Consequuntur Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem iste perspiciatis sed et
-
           </p>
      </div>
-     
 </div>
