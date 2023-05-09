@@ -12,13 +12,20 @@
           />
           <div style="margin: 0; padding: 0">
                <p style="margin: 0px; margin-top: 6px">
-                    <strong><%= post.user.firstName %> <%= post.user.lastName %></strong>
+                    <strong>
+                         <%= post.user.firstName %> <%= post.user.lastName %>
+                         <a href=""><i class="fa-solid fa-folder-minus" style="color: red;"></i></a>
+                    </strong>
                </p>
                <strong>23 Likes</strong>
           </div>
      </div>
-     <p style="margin-bottom: 6px; margin-left: 50px">
-          <strong><%= post.content %></strong>
+     <p style="margin-bottom: 6px; margin-left: 50px; padding-right: 25px">
+          <strong>
+               <i class="fa-solid fa-angles-right" style="color: #37FF8B;"></i>               
+               <%= post.content %>
+               <!-- <i class="fa-solid fa-quote-right" style="padding-left: 20px;"></i> -->
+          </strong>
      </p>
      <% if(locals.user) {%>
      <form action="/comment/create" method="post">
@@ -40,17 +47,29 @@
      </form>
      <% } %>
 
-     <div class="post-card my-1">
-          <img
-               src="https://plus.unsplash.com/premium_photo-1665657351698-7d61f4b57ddc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
-               class="rounded float-start"
-               alt="..."
-               width="30px"
-               height="30px"
-               style="margin: 10px; margin-top: 3px"
-          />
-          <p style="margin: 0; line-height: 1.1; margin-bottom: 5px">
-               Consequuntur Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem iste perspiciatis sed et
-          </p>
-     </div>
+     <ul>
+          <div class="post-card my-1 d-flex flex-column">
+               <% for(comment of post.comments) {%>
+               <li style="list-style: none">
+                    <div class="container d-flex">
+                         <img
+                              src="https://plus.unsplash.com/premium_photo-1665657351698-7d61f4b57ddc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
+                              class="rounded float-start"
+                              alt="..."
+                              width="30px"
+                              height="30px"
+                              style="margin: 10px; margin-top: 6px"
+                         />
+                         <div class="container">
+                              <small style="font-weight: bold"
+                                   ><%= comment.user.firstName %> <%= comment.user.lastName %>
+                              </small>
+                              <a style="float: right; padding-right: 20px; color: red;" href=""><i class="fa-solid fa-square-minus"></i></a>
+                              <p style="margin: 0; line-height: 1.1; margin-bottom: 5px"><%= comment.content %></p>
+                         </div>
+                    </div>
+               </li>
+               <% } %>
+          </div>
+     </ul>
 </div>

@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="/CSS/dashboard.css" />
 
 <div class="container m-0" id="feed-post">
-     <form action="/post/create" id="new-post-form" method="post">
+     <form action="/post/create" id="new-post-form" method="post" style=" margin-bottom: 60px;">
           <h5>Query</h5>
           <div class="form-floating">
                <textarea
@@ -12,7 +12,7 @@
                ></textarea>
                <label for="floatingTextarea">Post Your Query Here...</label>
           </div>
-          <button type="submit" class="mt-2 btn btn-dark">Post</button>
+          <button type="submit" class="mt-2 btn btn-dark" style="float: left; width: 200px;">Post</button>
      </form>
 
      <% for(post of posts){ %>
@@ -23,8 +23,20 @@
 </div>
 
 <div class="container">
-     <ul class="list-group" style="width: 50%; float: right">
-          <h5>Friends</h5>
-          <li class="list-group-item">An item</li>
+     <ul class="list-group" style="width: 40%; float: right">
+          <h5>
+               <i class="fa-solid fa-user-group" style="color: #37ff8b"></i>
+               Friends
+          </h5>
+          <li class="list-group-item d-flex flex-column" style="font-weight: bold">
+               <a href="" style="text-decoration: none; color: black; margin: 0;" class="d-flex">
+                    <p style="color: #37ff8b; font-weight: bold;">| &nbsp; </p>
+                    Shivam Kumar Gupta
+               </a>
+               <a href="" style="text-decoration: none; color: black;" class="d-flex">
+                    <p style="color: #37ff8b; font-weight: bold;">| &nbsp; </p>
+                    Shivam Kumar Gupta
+               </a>
+          </li>
      </ul>
 </div>

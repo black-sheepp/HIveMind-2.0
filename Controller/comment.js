@@ -10,7 +10,6 @@ module.exports.create = async function (req, res) {
                     post: req.body.post,
                     user: req.user._id,
                }).then((comment) => {
-                    console.log("check--------", comment);
                     post.comments.push(comment);
                     post.save();
                     // req.flash("success", "Comment Published");

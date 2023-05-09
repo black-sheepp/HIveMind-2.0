@@ -31,12 +31,17 @@ module.exports.createSession = function (req, res) {
 
 module.exports.dashboard = async function (req, res) {
      try {
-          let posts = await Post.find({}).sort({"createdAt":-1}).populate('user');
+          let posts = await Post.find({}).sort({ createdAt: -1 }).populate("user").populate({
+               path: "comments",
+               populate:{
+                    path: 'user'
+               }
+          });
 
           if (posts) {
                return res.render("dashboard", {
                     title: "Dashboard",
-                    posts: posts,
+                     posts: posts,
                });
           }
      } catch (err) {
