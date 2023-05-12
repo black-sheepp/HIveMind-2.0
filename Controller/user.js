@@ -56,6 +56,23 @@ module.exports.profile = async function (req, res) {
      });
 };
 
+module.exports.updateProfile = async function(req,res){
+     return res.render("updateProfile",{
+          title: "Update Profile",
+          user: await User.findById(req.params.id)
+     })
+}
+
+module.exports.updateSuccess = async function(req,res){
+     let user = await User.findByIdAndUpdate(req.params.id,req.body)
+     if(user){
+          return res.redirect('back')
+     }else{
+          console.log("Update Profile failed");
+          return res.status(401).send('Update Profile failed')
+     }
+}
+
 module.exports.signOut = function (req, res) {
      req.logout(function (err) {
           if (err) {

@@ -52,7 +52,7 @@
                          ><i class="fa-brands fa-square-github fa-2xl"></i> GitHub</a
                     >
                     <% if(locals.user.id == profile_user.id) {%>
-                    <a href="" style="text-decoration: none; font-weight: bold; color: black; margin-right: 40px"
+                    <a href="/user/update-profile/<%= locals.user.id %>" style="text-decoration: none; font-weight: bold; color: black; margin-right: 40px"
                          ><i class="fa-solid fa-user-pen fa-xl"></i> Update Profile</a
                     >
                     <% } %>

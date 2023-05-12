@@ -14,6 +14,8 @@ router.post(
 
 router.get("/dashboard",passport.checkAuthentication ,userCtrl.dashboard);
 router.get("/profile/:id",passport.checkAuthentication,userCtrl.profile)
+router.get("/update-profile/:id",passport.checkAuthentication,userCtrl.updateProfile)
+router.post("/update-success/:id",passport.checkAuthentication,userCtrl.updateSuccess)
 router.get("/sign-out",userCtrl.signOut)
 
 module.exports = router;
