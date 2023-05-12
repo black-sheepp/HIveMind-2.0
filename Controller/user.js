@@ -31,19 +31,19 @@ module.exports.createSession = function (req, res) {
 
 module.exports.dashboard = async function (req, res) {
      try {
-          let posts = await Post.find({}).sort({ createdAt: -1 }).populate("user").populate({
-               path: "comments",
-               populate:{
-                    path: 'user'
-               }
+          return res.render("dashboard", {
+               title: "Dashboard",
+               posts: await Post.find({})
+                    .sort({ createdAt: -1 })
+                    .populate("user")
+                    .populate({
+                         path: "comments",
+                         populate: {
+                              path: "user",
+                         },
+                    }),
+               friendList: await User.find({}),
           });
-
-          if (posts) {
-               return res.render("dashboard", {
-                    title: "Dashboard",
-                     posts: posts,
-               });
-          }
      } catch (err) {
           console.log(err);
      }

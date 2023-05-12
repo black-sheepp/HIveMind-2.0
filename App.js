@@ -9,6 +9,7 @@ const session = require("express-session");
 const passportLocal = require("./Config/passport-local-stratergy");
 const mongoStore = require("connect-mongo");
 
+
 App.set("view engine", "ejs");
 App.use(express.static("./Assets"));
 App.use(expressLayouts);

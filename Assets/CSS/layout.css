@@ -19,3 +19,6 @@ body{
 a:hover{
     color: #37FF8B !important;
 }
+p a :hover{
+    color: #37FF8B !important;
+}
