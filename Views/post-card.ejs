@@ -14,8 +14,10 @@
                <p style="margin: 0px; margin-top: 6px">
                     <strong>
                          <%= post.user.firstName %> <%= post.user.lastName %>
-                         <a href=""><i class="fa-solid fa-folder-minus" style="color: red;"></i></a>
                     </strong>
+                    <% if(locals.user.id == post.user._id) {%>
+                         <a href="/post/destroy/<%= post.id %>"><i class="fa-solid fa-folder-minus" style="color: red;"></i></a>
+                    <% } %>
                </p>
                <strong>23 Likes</strong>
           </div>
@@ -38,6 +40,7 @@
                     aria-label="Recipient's username"
                     aria-describedby="button-addon2"
                     style="margin-left: 50px; margin-right: 0"
+                    required
                />
                <input type="hidden" name="post" value="<%= post._id %>" />
                <button class="btn btn-outline-dark" type="submit" id="button-addon2" style="margin-right: 30px">

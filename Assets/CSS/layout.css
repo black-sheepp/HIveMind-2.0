@@ -11,3 +11,11 @@ body{
     color: white !important; */
     /* background: linear-gradient(to right, #ece9e6, #ffffff);  */
 }
+
+.btn:hover{
+    color: #37FF8B;
+}
+
+a:hover{
+    color: #37FF8B !important;
+}
