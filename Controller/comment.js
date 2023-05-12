@@ -21,3 +21,19 @@ module.exports.create = async function (req, res) {
           return res.redirect("back");
      }
 };
+
+module.exports.destroy = async function(req,res){
+     try{
+          let comment = await Comment.findById(req.params.id);
+          if(comment){
+               let postId = comment.post
+               comment.deleteOne()
+               await Post.findByIdAndUpdate(postId,{$pull:{comments: req.params.id}})
+               return res.redirect('back')
+          }else{
+               console.log('Comment not found')
+          }
+     }catch(err){
+          console.log(err)
+     }
+}
