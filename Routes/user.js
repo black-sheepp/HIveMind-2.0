@@ -13,7 +13,7 @@ router.post(
 );
 
 router.get("/dashboard",passport.checkAuthentication ,userCtrl.dashboard);
-router.get("/profile",passport.checkAuthentication,userCtrl.profile)
+router.get("/profile/:id",passport.checkAuthentication,userCtrl.profile)
 router.get("/sign-out",userCtrl.signOut)
 
 module.exports = router;

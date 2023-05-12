@@ -1,0 +1,16 @@
+<div class="container">
+    <ul class="list-group" style="width: 40%; float: right">
+         <h5>
+              <i class="fa-solid fa-user-group" style="color: #37ff8b;"></i>
+              Friends
+         </h5>
+         <li class="list-group-item d-flex flex-column" style="font-weight: bold">
+              <% for(friend of friendList) {%>
+                   <a href="/user/profile/<%= friend.id  %>" style="text-decoration: none; color: black; margin: 0" class="d-flex">
+                        <p style="color: #37ff8b; font-weight: bold">| &nbsp;</p>
+                        <%= friend.firstName %> <%= friend.lastName %>
+                   </a>
+              <% } %>
+         </li>
+    </ul>
+</div>

@@ -49,9 +49,10 @@ module.exports.dashboard = async function (req, res) {
      }
 };
 
-module.exports.profile = function (req, res) {
+module.exports.profile = async function (req, res) {
      return res.render("profile", {
           title: "Profile",
+          profile_user: await User.findById(req.params.id),
      });
 };
 
