@@ -12,12 +12,12 @@ module.exports.create = async function (req, res) {
                }).then((comment) => {
                     post.comments.push(comment);
                     post.save();
-                    // req.flash("success", "Comment Published");
+                    req.flash("success", "Comment Published");
                     res.redirect("/");
                });
           }
      } catch (err) {
-          //   req.flash("error", "Cannot Post Empty String");
+            req.flash("error", "Cannot Post Empty String");
           return res.redirect("back");
      }
 };
@@ -29,6 +29,7 @@ module.exports.destroy = async function(req,res){
                let postId = comment.post
                comment.deleteOne()
                await Post.findByIdAndUpdate(postId,{$pull:{comments: req.params.id}})
+               req.flash("error","Comment Deleted")
                return res.redirect('back')
           }else{
                console.log('Comment not found')

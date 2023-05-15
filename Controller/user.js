@@ -4,6 +4,7 @@ const User = require("../Models/users");
 module.exports.create = async function (req, res) {
      try {
           if (req.body.password != req.body.confirm_password) {
+               req.flash("success","password not matched")
                console.log("password not matched");
                return res.redirect("back");
           }
@@ -12,6 +13,7 @@ module.exports.create = async function (req, res) {
 
           if (!user) {
                User.create(req.body);
+               req.flash("success","New User Created")
                return res.redirect("/sign-in");
           }
 
@@ -88,6 +90,7 @@ module.exports.updateSuccess = async function (req, res) {
                               user.avatar = User.avatarPath + "/" + req.file.filename;
                          }
                          user.save();
+                         req.flash("success","Users Profile Updated")
                          return res.redirect("back");
                     });
                }
@@ -95,6 +98,7 @@ module.exports.updateSuccess = async function (req, res) {
                console.log(err);
           }
      } else {
+          req.flash("error","Update Profile failed")
           console.log("Update Profile failed");
           return res.status(401).send("Update Profile failed");
      }
