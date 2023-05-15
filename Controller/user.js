@@ -56,22 +56,47 @@ module.exports.profile = async function (req, res) {
      });
 };
 
-module.exports.updateProfile = async function(req,res){
-     return res.render("updateProfile",{
+module.exports.updateProfile = async function (req, res) {
+     return res.render("updateProfile", {
           title: "Update Profile",
-          user: await User.findById(req.params.id)
-     })
-}
+          user: await User.findById(req.params.id),
+     });
+};
 
-module.exports.updateSuccess = async function(req,res){
-     let user = await User.findByIdAndUpdate(req.params.id,req.body)
-     if(user){
-          return res.redirect('back')
-     }else{
+module.exports.updateSuccess = async function (req, res) {
+     if (req.user.id == req.params.id) {
+          try {
+               let user = await User.findById(req.params.id);
+               if (user) {
+                    await User.uploadedAvatar(req, res, function (err) {
+                         console.log(req.file);
+                         user.firstName = req.body.firstName;
+                         user.lastName = req.body.lastName;
+                         user.email = req.body.email;
+                         user.phone = req.body.phone;
+                         user.address = req.body.address;
+                         user.password = req.body.password;
+                         user.jobProfile = req.body.jobProfile;
+                         user.companyName = req.body.companyName;
+                         user.skills = req.body.skills;
+                         user.linkedIn = req.body.linkedIn;
+                         user.github = req.body.github;
+                         console.log(user)
+                         if (req.file) {
+                              user.avatar = User.avatarPath + "-" + req.file.filename;
+                         }
+                         user.save();
+                         return res.redirect("back");
+                    });
+               }
+          } catch (err) {
+               console.log(err);
+          }
+     } else {
           console.log("Update Profile failed");
-          return res.status(401).send('Update Profile failed')
+          return res.status(401).send("Update Profile failed");
      }
-}
+};
 
 module.exports.signOut = function (req, res) {
      req.logout(function (err) {
