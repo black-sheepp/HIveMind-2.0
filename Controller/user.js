@@ -26,6 +26,7 @@ module.exports.create = async function (req, res) {
 };
 
 module.exports.createSession = function (req, res) {
+     req.flash('success','You have Logged In Successfully')
      return res.redirect("/user/dashboard");
 };
 
@@ -82,7 +83,7 @@ module.exports.updateSuccess = async function (req, res) {
                          user.linkedIn = req.body.linkedIn;
                          user.github = req.body.github;
                          console.log(user);
-                         if (req.file) {
+                         if (req.file) {   
                               // this is saving the path of the uploaded file into the avatar field as a string in the user schema
                               user.avatar = User.avatarPath + "/" + req.file.filename;
                          }
@@ -104,6 +105,7 @@ module.exports.signOut = function (req, res) {
           if (err) {
                return next(err);
           }
+          req.flash('success','You have Logged Out Successfully')
           res.redirect("/");
      });
 };
