@@ -81,9 +81,10 @@ module.exports.updateSuccess = async function (req, res) {
                          user.skills = req.body.skills;
                          user.linkedIn = req.body.linkedIn;
                          user.github = req.body.github;
-                         console.log(user)
+                         console.log(user);
                          if (req.file) {
-                              user.avatar = User.avatarPath + "-" + req.file.filename;
+                              // this is saving the path of the uploaded file into the avatar field as a string in the user schema
+                              user.avatar = User.avatarPath + "/" + req.file.filename;
                          }
                          user.save();
                          return res.redirect("back");
