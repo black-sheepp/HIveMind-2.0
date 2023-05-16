@@ -2,7 +2,7 @@ const Comment = require("../../../Models/comments");
 const Post = require("../../../Models/posts")
 
 module.exports.index = async function(req,res){
-    return res.json(200,{
+    return res.status(200).json({
         message: "List of Posts",
         posts: await Post.find({}).populate()
     })

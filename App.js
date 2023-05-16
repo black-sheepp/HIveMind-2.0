@@ -7,9 +7,11 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const session = require("express-session");
 const passportLocal = require("./Config/passport-local-stratergy");
+const passportJWT = require('./Config/passport-jwt-strategy');
 const mongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 const customMiddleware = require("./Config/middleware");
+
 
 App.set("view engine", "ejs");
 App.use(express.static("./Assets"));
