@@ -9,8 +9,8 @@ let transporter = nodemailer.createTransport({
      port: 587,
      secure: false, // true for 465, false for other ports
      auth: {
-          user: "fullstackmerndev@gmail.com", // generated ethereal user
-          pass: "fullstackmerndev@123", // generated ethereal password
+          user: "fullstackmerndevelop@gmail.com", // generated ethereal user
+          pass: "mexpwmlwnkoarulq", // generated ethereal password
      },
 });
 
@@ -27,6 +27,6 @@ let renderTemplate = (data, relativePath) => {
 };
 
 module.exports = {
-    transporter: transporter,
-    renderTemplate: renderTemplate,
-}
+     transporter: transporter,
+     renderTemplate: renderTemplate,
+};

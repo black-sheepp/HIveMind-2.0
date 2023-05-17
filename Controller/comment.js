@@ -1,5 +1,6 @@
 const Comment = require("../Models/comments");
 const Post = require("../Models/posts");
+const commentMailer = require('../Mailers/comments_mailer')
 
 module.exports.create = async function (req, res) {
      try {
@@ -12,12 +13,14 @@ module.exports.create = async function (req, res) {
                });
                post.comments.push(comment);
                post.save();
+               comment = await comment.populate('user','firstName email')
+               commentMailer.newComment(comment);
                res.redirect("/");
           }
      } catch (err) {
           req.flash("error", "Cannot Post Empty String");
           return res.redirect("back");
-     }
+     } 
 };
 
 module.exports.destroy = async function (req, res) {
