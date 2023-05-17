@@ -45,7 +45,7 @@ module.exports.dashboard = async function (req, res) {
                               path: "user",
                          },
                     }),
-               friendList: await User.find({}),
+               friendList: await User.find({}).sort({firstName: 1}),
           });
      } catch (err) {
           console.log(err);

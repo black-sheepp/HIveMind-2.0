@@ -9,7 +9,7 @@ module.exports.createSession = async function (req, res) {
         }
 
         return res.status(200).json({ message: "Sign In Successful. Here is your token, please keep it safe!", data: {
-            token: jwt.sign(user.toJSON(), 'hivemind', {expiresIn: '10000'})
+            token: jwt.sign(user.toJSON(), 'hivemind', {expiresIn: '1000000'})
         } });
 
      } catch (err) {
