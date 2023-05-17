@@ -11,13 +11,13 @@ passport.use(
                callbackURL: "http://localhost:8080/user/auth/google/callback",
           },
           async function (accessToken, refreshToken, profile, done) {
-               let user = await User.findOne({ email: profile.email[0].value });
+               let user = await User.findOne({ email: profile.emails[0].value});
                console.log(profile);
                if (user) {
                     return done(null, user);
                } else {
                     {
-                         console.log("Error in google strategy passport", err);
+                         console.log("User Account doesnot exist. Please Sign Up");
                          return;
                     }
                }

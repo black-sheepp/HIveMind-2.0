@@ -11,6 +11,8 @@ router.post(
      }),
      userCtrl.createSession
 );
+router.get('/auth/google',passport.authenticate('google',{scope:['profile','email']}))
+router.get('/auth/google/callback',passport.authenticate('google',{failureRedirect: '/sign-in'}),userCtrl.createSession)
 
 router.get("/dashboard",passport.checkAuthentication ,userCtrl.dashboard);
 router.get("/profile/:id",passport.checkAuthentication,userCtrl.profile)
