@@ -16,10 +16,10 @@
                          <%= post.user.firstName %> <%= post.user.lastName %>
                     </strong>
                     <% if(locals.user.id == post.user._id) {%>
-                         <a href="/post/destroy/<%= post.id %>"><i class="fa-solid fa-folder-minus" style="color: red;"></i></a>
+                         <a href="/post/destroy/<%= post.id %>"><i class="fa-solid fa-trash" style="color: #020202;"></i></a>
                     <% } %>
                </p>
-               <strong>23 Likes</strong>
+               <small style="color: grey;"><a href=""><i class="fa-regular fa-thumbs-up fa-xl" style="color: #132a13;"></i></a> 23 Likes</small>
           </div>
      </div>
      <p style="margin-bottom: 6px; margin-left: 50px; padding-right: 25px">
@@ -68,9 +68,10 @@
                                    ><%= comment.user.firstName %> <%= comment.user.lastName %>
                               </small>
                               <% if(locals.user.id == comment.user.id || locals.user.id == post.user.id) {%>
-                                   <a style="float: right; padding-right: 20px; color: red;" href="/comment/destroy/<%= comment.id %>"><i class="fa-solid fa-square-minus"></i></a>
+                                   <a style="float: right; padding-right: 20px; color: #020202;" href="/comment/destroy/<%= comment.id %>"><i class="fa-solid fa-trash"></i></a>
                               <% }%>
                               <p style="margin: 0; line-height: 1.1; margin-bottom: 5px"><%= comment.content %></p>
+                              <small style="color: grey;"><a href=""><i class="fa-regular fa-thumbs-up fa-lg" style="color: #132a13;"></i></a> 23 Likes</small>
                          </div>
                     </div>
                </li>
