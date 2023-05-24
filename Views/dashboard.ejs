@@ -5,6 +5,7 @@
           <h5>Query</h5>
           <div class="form-floating">
                <textarea
+               id="form-text-area"
                     class="form-control"
                     placeholder="Leave a comment here"
                     style="resize: none; border: 3px solid black; height: 100px; width: 100%"
@@ -17,12 +18,15 @@
      </form>
 
      <% for(post of posts){ %>
-     <div class="container mx-0 px-0 my-4" width="50%" style="border: 2px solid black; border-radius: 10px">
-          <%- include('post-card') %>
-     </div>
+          <div id="post-list-container">
+               <%- include('post-card') %>
+          </div>
      <% } %>
 </div>
 
 <div class="container">
      <%- include('_friendsList') %>
 </div>
+
+
+<script src="/JS/home_post.js"></script>
