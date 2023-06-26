@@ -1,99 +1,81 @@
 <link rel="stylesheet" href="/CSS/post-card.css" />
-<div id="post-<%= post._id %>">
-     <div  class="container mx-0 px-0 my-4" width="50%" style="border: 2px solid black; border-radius: 10px">
-          <div class="post-card my-2">
-               <img
-                    src="<%= post.user.avatar %>"
-                    class="rounded float-start"
-                    alt="..."
-                    width="40px"
-                    height="40px"
-                    style="margin: 10px"
-               />
-               <div style="margin: 0; padding: 0">
-                    <p style="margin: 0px; margin-top: 6px">
-                         <strong> <%= post.user.firstName %> <%= post.user.lastName %> </strong>
-     
-                         <% if(locals.user.id == post.user._id) {%>
-                         <a href="/post/destroy/<%= post.id %>" class="delete-post-btn"
-                              ><i class="fa-solid fa-trash-can" style="color: #132a13"></i
-                         ></a>
-                         <% } %>
-                    </p>
-                    <small>
-                         <a href="" style="text-decoration: none; color: #132a13"
-                              ><i class="fa-regular fa-thumbs-up fa-xl"></i
-                         ></a>
-                         Likes</small
-                    >
-               </div>
-          </div>
-          <p style="margin-bottom: 6px; margin-left: 50px; padding-right: 25px">
-               <strong>
-                    <i class="fa-solid fa-angles-right" style="color: #37ff8b"></i>
-                    <%= post.content %>
-                    <!-- <i class="fa-solid fa-quote-right" style="padding-left: 20px;"></i> -->
-               </strong>
-          </p>
-          <% if(locals.user) {%>
-          <form action="/comment/create" method="post">
-               <div class="input-group mb-1">
-                    <input
-                         name="content"
-                         type="text"
-                         class="form-control"
-                         placeholder="Add Comment"
-                         aria-label="Recipient's username"
-                         aria-describedby="button-addon2"
-                         style="margin-left: 50px; margin-right: 0"
-                         required
-                    />
-                    <input type="hidden" name="post" value="<%= post._id %>" />
-                    <button class="btn btn-outline-dark" type="submit" id="button-addon2" style="margin-right: 30px">
-                         Comment
-                    </button>
-               </div>
-          </form>
-          <% } %>
-     
-          <ul id="post-comments-<%= post._id %>">
-               <div class="post-card my-1 d-flex flex-column">
-                    <% for(comment of post.comments) {%>
-                    <li style="list-style: none">
-                         <div class="container d-flex">
-                              <img
-                                   src="<%= comment.user.avatar %>"
-                                   class="rounded float-start"
-                                   alt="..."
-                                   width="30px"
-                                   height="30px"
-                                   style="margin: 10px; margin-top: 6px"
-                              />
-                              <div class="container">
-                                   <small style="font-weight: bold"
-                                        ><%= comment.user.firstName %> <%= comment.user.lastName %>
-                                   </small>
-                                   <% if(locals.user.id == comment.user.id || locals.user.id == post.user.id) {%>
-                                   <a
-                                        style="float: right; padding-right: 20px; color: #132a13"
-                                        href="/comment/destroy/<%= comment.id %>"
-                                        ><i class="fa-solid fa-trash-can"></i
-                                   ></a>
-                                   <% }%>
-                                   <p style="margin: 0; line-height: 1.1; margin-bottom: 5px"><%= comment.content %></p>
-                                   <small>
-                                        <a href="" style="text-decoration: none; color: #132a13"
-                                             ><i class="fa-regular fa-thumbs-up fa-xl"></i
-                                        ></a>
-                                        Likes</small
-                                   >
-                              </div>
-                         </div>
-                    </li>
-                    <% } %>
-               </div>
-          </ul>
-     
-     </div>
-</div>
 
+<div>
+     <div class="post-card my-2">
+          <img
+               src="<%= post.user.avatar %>"
+               class="rounded float-start"
+               alt="..."
+               width="40px"
+               height="40px"
+               style="margin: 10px"
+          />
+          <div style="margin: 0; padding: 0">
+               <p style="margin: 0px; margin-top: 6px">
+                    <strong>
+                         <%= post.user.firstName %> <%= post.user.lastName %>
+                    </strong>
+                    <% if(locals.user.id == post.user._id) {%>
+                         <a href="/post/destroy/<%= post.id %>"><i class="fa-solid fa-trash" style="color: #020202;"></i></a>
+                    <% } %>
+               </p>
+               <small style="color: grey;"><a href=""><i class="fa-regular fa-thumbs-up fa-xl" style="color: #132a13;"></i></a> 23 Likes</small>
+          </div>
+     </div>
+     <p style="margin-bottom: 6px; margin-left: 50px; padding-right: 25px">
+          <strong>
+               <i class="fa-solid fa-angles-right" style="color: #37FF8B;"></i>               
+               <%= post.content %>
+               <!-- <i class="fa-solid fa-quote-right" style="padding-left: 20px;"></i> -->
+          </strong>
+     </p>
+     <% if(locals.user) {%>
+     <form action="/comment/create" method="post">
+          <div class="input-group mb-1">
+               <input
+                    name="content"
+                    type="text"
+                    class="form-control"
+                    placeholder="Add Comment"
+                    aria-label="Recipient's username"
+                    aria-describedby="button-addon2"
+                    style="margin-left: 50px; margin-right: 0"
+                    required
+               />
+               <input type="hidden" name="post" value="<%= post._id %>" />
+               <button class="btn btn-outline-dark" type="submit" id="button-addon2" style="margin-right: 30px">
+                    Comment
+               </button>
+          </div>
+     </form>
+     <% } %>
+
+     <ul>
+          <div class="post-card my-1 d-flex flex-column">
+               <% for(comment of post.comments) {%>
+               <li style="list-style: none">
+                    <div class="container d-flex">
+                         <img
+                         src="<%= comment.user.avatar %>"
+                              class="rounded float-start"
+                              alt="..."
+                              width="30px"
+                              height="30px"
+                              style="margin: 10px; margin-top: 6px"
+                         />
+                         <div class="container">
+                              <small style="font-weight: bold"
+                                   ><%= comment.user.firstName %> <%= comment.user.lastName %>
+                              </small>
+                              <% if(locals.user.id == comment.user.id || locals.user.id == post.user.id) {%>
+                                   <a style="float: right; padding-right: 20px; color: #020202;" href="/comment/destroy/<%= comment.id %>"><i class="fa-solid fa-trash"></i></a>
+                              <% }%>
+                              <p style="margin: 0; line-height: 1.1; margin-bottom: 5px"><%= comment.content %></p>
+                              <small style="color: grey;"><a href=""><i class="fa-regular fa-thumbs-up fa-lg" style="color: #132a13;"></i></a> 23 Likes</small>
+                         </div>
+                    </div>
+               </li>
+               <% } %>
+          </div>
+     </ul>
+</div>
