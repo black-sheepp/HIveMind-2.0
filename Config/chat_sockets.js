@@ -4,5 +4,4 @@ module.exports.chatSockets = function(socketServer){
     io.sockets.on('connection', function(socket){
         console.log('new connection recieved', socket.id)
     });
-
 }

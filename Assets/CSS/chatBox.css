@@ -45,8 +45,9 @@
 
 .send-button {
   border: none;
+  border-radius: 7px;
   outline: none;
-  background-color: #333;
+  background-color: black;
   color: #fff;
   font-size: 14px;
   padding: 5px 10px;
