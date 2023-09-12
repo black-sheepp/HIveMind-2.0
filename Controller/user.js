@@ -53,8 +53,9 @@ module.exports.dashboard = async function (req, res) {
 };
 
 module.exports.profile = async function (req, res) {
+     profiler_name = await User.findById(req.params.id);
      return res.render("profile", {
-          title: "Profile",
+          title: profiler_name.firstName + " " + profiler_name.lastName,
           profile_user: await User.findById(req.params.id),
      });
 };
