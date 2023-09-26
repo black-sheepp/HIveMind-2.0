@@ -12,7 +12,7 @@
 		<div style="margin: 0; padding: 0" class="container">
 			<% if(locals.user.id == post.user._id) {%>
 			<a style="float: right; padding-right: 20px; color: #020202" href="/post/destroy/<%= post.id %>"
-				><i class="fa-solid fa-trash fa-lg" style="color: #020202"></i
+				><i class="fa-solid fa-trash fa-lg" style="color: red"></i
 			></a>
 			<% } %>
 			<p style="margin: 0px; margin-top: 6px">
@@ -70,7 +70,7 @@
 						<a
 							style="float: right; padding-right: 20px; color: #020202"
 							href="/comment/destroy/<%= comment.id %>"
-							><i class="fa-solid fa-trash"></i
+							><i class="fa-solid fa-trash" style="color: red"></i
 						></a>
 						<% }%>
 						<p style="margin: 0; line-height: 1.1; margin-bottom: 5px"><%= comment.content %></p>
